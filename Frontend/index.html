@@ -544,7 +544,7 @@
                 params.append('year', startDate.getFullYear());
             }
 
-            const url = `http://16.171.250.125:3061/api/payslips/history?${params.toString()}`;
+            const url = `http://16.170.225.247:3061/api/payslips/history?${params.toString()}`;
             console.log(`[${new Date().toISOString()}] Fetching payslips: ${url}`);
 
             const response = await fetch(url);

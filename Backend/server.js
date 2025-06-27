@@ -9,7 +9,7 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 
 const app = express();
-const PORT = process.env.PORT || 3111;
+const PORT = process.env.PORT || 3061;
 
 const UPLOAD_DIR = path.join(__dirname, process.env.UPLOAD_DIR || '../upload');
 const MAX_FILE_SIZE = process.env.MAX_FILE_SIZE || '10mb';
@@ -30,9 +30,9 @@ if (!fs.existsSync(UPLOAD_DIR)) {
 app.use(helmet());
 app.use(cors({
   origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : [
-    'http://16.171.250.125:3061',
+    'http://16.170.225.247:3061',
     'http://127.0.0.1:5500',
-    'http://16.171.250.125:5500',
+    'http://16.170.225.247:5500',
     'http://127.0.0.1:5503',
     'null'
   ],
@@ -391,7 +391,7 @@ async function startServer() {
     await initializeDatabase();
     const server = app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
-      console.log(`API Documentation: http://16.171.250.125:${PORT}/api-docs`);
+      console.log(`API Documentation: http://16.170.225.247:${PORT}/api-docs`);
     });
 
     process.on('SIGTERM', () => shutdown(server));
